@@ -1,12 +1,14 @@
 package com.unicorn.browser
 
-import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
-import android.view.View
-import android.webkit.*
-import android.widget.*
+import android.webkit.WebView
+import android.widget.Button
+import android.widget.EditText
+import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
+import com.unicorn.browser.web.BrowserWebChromeClient
+import com.unicorn.browser.web.BrowserWebViewClient
 
 class MainActivity : AppCompatActivity() {
 
@@ -36,48 +38,17 @@ class MainActivity : AppCompatActivity() {
             javaScriptEnabled = true
             domStorageEnabled = true
             loadsImagesAutomatically = true
-            mixedContentMode = WebSettings.MIXED_CONTENT_COMPATIBILITY_MODE
         }
 
-        webView.webViewClient = object : WebViewClient() {
+        webView.webViewClient = BrowserWebViewClient(
+            progressBar,
+            urlInput
+        )
 
-            override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
-                progressBar.visibility = View.VISIBLE
-                urlInput.setText(url ?: "")
-            }
-
-            override fun onPageFinished(view: WebView?, url: String?) {
-                progressBar.visibility = View.GONE
-            }
-
-            override fun shouldOverrideUrlLoading(
-                view: WebView?,
-                request: WebResourceRequest?
-            ): Boolean {
-                return false
-            }
-
-            override fun onReceivedError(
-                view: WebView?,
-                request: WebResourceRequest?,
-                error: WebResourceError?
-            ) {
-                view?.loadData(
-                    "<h2>Page not available</h2><p>Check your connection</p>",
-                    "text/html",
-                    "UTF-8"
-                )
-            }
-        }
-
-        webView.webChromeClient = object : WebChromeClient() {
-            override fun onProgressChanged(view: WebView?, newProgress: Int) {
-                progressBar.progress = newProgress
-            }
-
-            override fun onReceivedTitle(view: WebView?, title: String?) {
-                this@MainActivity.title = title ?: "Unicorn Browser"
-            }
+        webView.webChromeClient = BrowserWebChromeClient(
+            progressBar
+        ) { title ->
+            this.title = title
         }
     }
 
