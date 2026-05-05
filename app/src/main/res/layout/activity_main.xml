@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Search Bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:padding="10dp"
+        android:orientation="horizontal"
+        android:background="#F5F5F5">
+
+        <EditText
+            android:id="@+id/urlInput"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="40dp"
+            android:hint="Search or enter address"
+            android:background="@drawable/bg_search"
+            android:padding="10dp"
+            android:textColor="#000000"/>
+
+        <Button
+            android:id="@+id/btnGo"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:text="Go"/>
+    </LinearLayout>
+
+    <!-- Shortcuts -->
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="80dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <Button android:text="Google"/>
+            <Button android:text="YouTube"/>
+            <Button android:text="Facebook"/>
+            <Button android:text="Wikipedia"/>
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- WebView -->
+    <android.webkit.WebView
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <!-- Bottom Navigation -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:background="#EEEEEE"
+        android:gravity="center">
+
+        <Button android:id="@+id/btnBack" android:text="Back"/>
+        <Button android:id="@+id/btnForward" android:text="Forward"/>
+        <Button android:id="@+id/btnHome" android:text="Home"/>
+    </LinearLayout>
+
+</LinearLayout>
