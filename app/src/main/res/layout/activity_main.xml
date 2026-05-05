@@ -5,6 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!-- Progress Bar -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:visibility="gone"/>
+
     <!-- Search Bar -->
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,24 +38,6 @@
             android:text="Go"/>
     </LinearLayout>
 
-    <!-- Shortcuts -->
-    <HorizontalScrollView
-        android:layout_width="match_parent"
-        android:layout_height="80dp">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:padding="10dp">
-
-            <Button android:text="Google"/>
-            <Button android:text="YouTube"/>
-            <Button android:text="Facebook"/>
-            <Button android:text="Wikipedia"/>
-        </LinearLayout>
-    </HorizontalScrollView>
-
     <!-- WebView -->
     <android.webkit.WebView
         android:id="@+id/webView"
@@ -63,9 +53,23 @@
         android:background="#EEEEEE"
         android:gravity="center">
 
-        <Button android:id="@+id/btnBack" android:text="Back"/>
-        <Button android:id="@+id/btnForward" android:text="Forward"/>
-        <Button android:id="@+id/btnHome" android:text="Home"/>
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="Back"/>
+
+        <Button
+            android:id="@+id/btnForward"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="Forward"/>
+
+        <Button
+            android:id="@+id/btnHome"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="Home"/>
     </LinearLayout>
 
 </LinearLayout>
